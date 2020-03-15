@@ -1,11 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromRoot from '../../state/app.state';
 import * as fromTasks from './task.reducer';
 
-// Extends the app state to include the task feature.
-// This is required because tasks are lazy loaded.
-// So the reference to TaskState cannot be added to app.state.ts directly.
-export interface State extends fromRoot.State {
+export interface State {
     tasks: fromTasks.TaskState;
 }
 

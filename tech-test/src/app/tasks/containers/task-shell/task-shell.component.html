@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-md-4'>
+    <pm-task-list
+    [displayCode]="displayCode$ | async"
+    [tasks]="tasks$ | async"
+    [selectedTask]="selectedTask$ | async"
+	  [errorMessage]="errorMessage$ | async"
+    (checked)="checkChanged($event)"
+    (initializeNewTask)="(newTask())"
+    (selected)="taskSelected($event)"></pm-task-list>
+  </div>
+  <div class='col-md-8'>
+    <pm-task-edit
+    [selectedTask]="selectedTask$ | async"
+	  [errorMessage]="errorMessage$ | async"
+    (clearCurrent)="clearTask()"
+    (update)="updateTask($event)"
+    (delete)="deleteTask($event)"
+    (create)="saveTask($event)"></pm-task-edit>
+  </div>
+</div>
