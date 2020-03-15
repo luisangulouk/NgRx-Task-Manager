@@ -11,6 +11,11 @@ const appRoutes: Routes = [
     component: ShellComponent,
     children: [
       { path: 'welcome', component: WelcomeComponent },
+      {
+        path: 'tasks',
+        loadChildren: () =>
+          import('./tasks/task.module').then(m => m.TaskModule)
+      },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     ]
   },
