@@ -23,7 +23,7 @@ export class TaskEffects {
     mergeMap(action =>
       this.taskService.getTasks().pipe(
         map(tasks => (new taskActions.LoadSuccess(tasks))),
-        catchError(err => of(new taskActions.LoadFail(err)))
+        catchError(error => of(new taskActions.LoadFail({error})))
       )
     )
   );
@@ -35,7 +35,7 @@ export class TaskEffects {
     mergeMap((task: Task) =>
       this.taskService.updateTask(task).pipe(
         map(updatedTask => (new taskActions.UpdateTaskSuccess(updatedTask))),
-        catchError(err => of(new taskActions.UpdateTaskFail(err)))
+        catchError(error => of(new taskActions.UpdateTaskFail({error})))
       )
     )
   );
@@ -47,7 +47,7 @@ export class TaskEffects {
     mergeMap((task: Task) =>
       this.taskService.createTask(task).pipe(
         map(newTask => (new taskActions.CreateTaskSuccess(newTask))),
-        catchError(err => of(new taskActions.CreateTaskFail(err)))
+        catchError(error => of(new taskActions.CreateTaskFail({error})))
       )
     )
   );

@@ -56,7 +56,7 @@ export class LoadSuccess implements Action {
 export class LoadFail implements Action {
   readonly type = TaskActionTypes.LoadFail;
 
-  constructor(public payload: Error) { }
+  constructor(public payload: { error: Error }) { }
 }
 
 export class UpdateTask implements Action {
@@ -74,7 +74,7 @@ export class UpdateTaskSuccess implements Action {
 export class UpdateTaskFail implements Action {
   readonly type = TaskActionTypes.UpdateTaskFail;
 
-  constructor(public payload: Error) { }
+  constructor(public payload: { error: Error }) { }
 }
 
 export class CreateTask implements Action {
@@ -92,7 +92,7 @@ export class CreateTaskSuccess implements Action {
 export class CreateTaskFail implements Action {
   readonly type = TaskActionTypes.CreateTaskFail;
 
-  constructor(public payload: Error) { }
+  constructor(public payload: { error: Error }) { }
 }
 
 export class DeleteTask implements Action {
@@ -110,7 +110,7 @@ export class DeleteTaskSuccess implements Action {
 export class DeleteTaskFail implements Action {
   readonly type = TaskActionTypes.DeleteTaskFail;
 
-  constructor(public payload: Error) { }
+  constructor(public payload: { error: Error }) { }
 }
 
 // Union the valid types

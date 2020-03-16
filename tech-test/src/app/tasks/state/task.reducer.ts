@@ -6,10 +6,10 @@ export interface TaskState {
   showTaskCode: boolean;
   currentTaskId: number | null;
   tasks: Task[];
-  error: Error;
+  error?: Error;
 }
 
-const initialState: TaskState = {
+export const initialState: TaskState = {
   showTaskCode: true,
   currentTaskId: null,
   tasks: [],
@@ -50,27 +50,13 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
         error: null
       };
 
-    case TaskActionTypes.LoadFail:
-      return {
-        ...state,
-        tasks: [],
-        error: action.payload
-      };
-
     case TaskActionTypes.UpdateTaskSuccess:
       const updatedTasks = state.tasks.map(
         item => action.payload.id === item.id ? action.payload : item);
       return {
         ...state,
         tasks: updatedTasks,
-        currentTaskId: action.payload.id,
-        error: null
-      };
-
-    case TaskActionTypes.UpdateTaskFail:
-      return {
-        ...state,
-        error: action.payload
+        currentTaskId: action.payload.id
       };
 
     // After a create, the currentTask is the new task.
@@ -78,14 +64,7 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
-        currentTaskId: action.payload.id,
-        error: null
-      };
-
-    case TaskActionTypes.CreateTaskFail:
-      return {
-        ...state,
-        error: action.payload
+        currentTaskId: action.payload.id
       };
 
     // After a delete, the currentTask is null.
@@ -93,14 +72,16 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload),
-        currentTaskId: null,
-        error: null
+        currentTaskId: null
       };
 
+    case TaskActionTypes.LoadFail:
+    case TaskActionTypes.UpdateTaskFail:
+    case TaskActionTypes.CreateTaskFail:
     case TaskActionTypes.DeleteTaskFail:
       return {
         ...state,
-        error: action.payload
+        error: action.payload.error
       };
 
     default:
