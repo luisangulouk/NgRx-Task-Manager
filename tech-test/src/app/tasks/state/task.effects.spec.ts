@@ -19,7 +19,7 @@ describe('Effect: Tasks', () => {
     const tasks: Task[] = [{
       id: 2,
       label: "Taxes",
-      description: "Start doing my taxes and contact my accountant jhon for advice",
+      description: "Start doing my taxes",
       category: "Cat-2",
       done: "01-01-2080"
     }];
