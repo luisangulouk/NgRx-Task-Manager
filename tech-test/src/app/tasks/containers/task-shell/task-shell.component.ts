@@ -14,6 +14,8 @@ export class TaskShellComponent implements OnInit {
   displayCode$: Observable<boolean>;
   selectedTask$: Observable<Task>;
   tasks$: Observable<Task[]>;
+  filteredTasks$: Observable<Task[]>;
+  showFilteredTasks$: Observable<boolean>;
   errorMessage$: Observable<Error>;
 
   constructor(private store: Store<fromTask.State>) {}
@@ -21,6 +23,8 @@ export class TaskShellComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new taskActions.Load());
     this.tasks$ = this.store.pipe(select(fromTask.getTasks));
+    this.filteredTasks$ = this.store.pipe(select(fromTask.getFilteredTasks));
+    this.showFilteredTasks$ = this.store.pipe(select(fromTask.getShowFilteredTasks));
     this.errorMessage$ = this.store.pipe(select(fromTask.getError));
     this.selectedTask$ = this.store.pipe(select(fromTask.getCurrentTask));
     this.displayCode$ = this.store.pipe(select(fromTask.getShowTaskCode));
@@ -45,12 +49,21 @@ export class TaskShellComponent implements OnInit {
   clearTask(): void {
     this.store.dispatch(new taskActions.ClearCurrentTask());
   }
+
   saveTask(task: Task): void {
-    console.log(task);
     this.store.dispatch(new taskActions.CreateTask(task));
   }
 
   updateTask(task: Task): void {
     this.store.dispatch(new taskActions.UpdateTask(task));
+  }
+
+  filterTask(taskLabel: string): void {
+    this.store.dispatch(new taskActions.FilterTask(taskLabel));
+    this.store.dispatch(new taskActions.ShowFilteredTasks(true));
+  }
+
+  resetFilter(e: Event): void {
+    this.store.dispatch(new taskActions.ShowFilteredTasks(false));
   }
 }

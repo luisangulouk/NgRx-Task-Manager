@@ -4,15 +4,19 @@ import { TaskActionTypes, TaskActions } from './task.actions';
 // State for this feature (Task)
 export interface TaskState {
   showTaskCode: boolean;
+  showFilteredTasks: boolean;
   currentTaskId: number | null;
   tasks: Task[];
+  filteredTasks: Task[];
   error?: Error;
 }
 
 export const initialState: TaskState = {
   showTaskCode: true,
+  showFilteredTasks: false,
   currentTaskId: null,
   tasks: [],
+  filteredTasks: [],
   error: null
 };
 
@@ -47,6 +51,7 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: action.payload,
+        filteredTasks: action.payload,
         error: null
       };
 
@@ -56,6 +61,7 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: updatedTasks,
+        filteredTasks: updatedTasks,
         currentTaskId: action.payload.id
       };
 
@@ -64,6 +70,7 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
+        filteredTasks: [...state.tasks, action.payload],
         currentTaskId: action.payload.id
       };
 
@@ -72,6 +79,7 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload),
+        filteredTasks: state.tasks.filter(task => task.id !== action.payload),
         currentTaskId: null
       };
 
@@ -82,6 +90,20 @@ export function reducer(state = initialState, action: TaskActions): TaskState {
       return {
         ...state,
         error: action.payload.error
+      };
+
+    case TaskActionTypes.FilterTask:
+      return {
+        ...state,
+        filteredTasks: state.tasks.filter(task => task.label === action.payload),
+        showFilteredTasks: true
+      };
+
+    case TaskActionTypes.ShowFilteredTasks:
+      return {
+        ...state,
+        showFilteredTasks: action.payload,
+        filteredTasks: !action.payload ? [...state.tasks] : [...state.filteredTasks]
       };
 
     default:

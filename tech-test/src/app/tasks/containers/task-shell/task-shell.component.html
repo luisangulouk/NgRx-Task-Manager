@@ -1,21 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <task-filter
+    [hasFilter]="showFilteredTasks$ | async"
+    (search)="filterTask($event)"
+    (reset)="resetFilter($event)"></task-filter>
+  </div>
+</div>
 <div class='row'>
   <div class='col-md-4'>
-    <pm-task-list
+    <task-list
     [displayCode]="displayCode$ | async"
     [tasks]="tasks$ | async"
+    [filteredTasks]="filteredTasks$ | async"
+      [showFilteredTasks]="showFilteredTasks$ | async"
     [selectedTask]="selectedTask$ | async"
 	  [errorMessage]="errorMessage$ | async"
     (checked)="checkChanged($event)"
     (initializeNewTask)="(newTask())"
-    (selected)="taskSelected($event)"></pm-task-list>
+    (selected)="taskSelected($event)"></task-list>
   </div>
   <div class='col-md-8'>
-    <pm-task-edit
+    <task-edit
     [selectedTask]="selectedTask$ | async"
 	  [errorMessage]="errorMessage$ | async"
     (clearCurrent)="clearTask()"
     (update)="updateTask($event)"
     (delete)="deleteTask($event)"
-    (create)="saveTask($event)"></pm-task-edit>
+    (create)="saveTask($event)"></task-edit>
   </div>
 </div>

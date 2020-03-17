@@ -15,7 +15,7 @@ import { GenericValidator } from '../../../shared/generic-validator';
 import { NumberValidators } from '../../../shared/number.validator';
 
 @Component({
-  selector: 'pm-task-edit',
+  selector: 'task-edit',
   templateUrl: './task-edit.component.html',
   styleUrls: ['./task-edit.component.scss']
 })

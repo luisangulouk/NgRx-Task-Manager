@@ -23,23 +23,6 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-md-3 col-form-label" for="taskCodeId">Task No</label>
-
-          <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.id}" 
-                   class="form-control"
-                   id="taskCodeId"
-                   type="text"
-                   placeholder="Code (required)"
-                   formControlName="id"
-                   (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.id">
-              {{displayMessage.id}}
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row">
           <label class="col-md-3 col-form-label" for="descriptionId">Category</label>
 
           <div class="col-md-9">

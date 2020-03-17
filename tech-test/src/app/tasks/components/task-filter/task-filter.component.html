@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="input-group col-md-12">
+        <input 
+            [(ngModel)]="keySearch"
+            (keyup.enter)="getTasks()"
+            type="text" 
+            class="form-control" 
+            placeholder="Enter a task's name" 
+            aria-label="Enter a task's name" 
+            aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button 
+                (click)="getTasks()"
+                class="btn btn-primary" 
+                type="button"
+                >Search
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-check col-md-12 col-empty-mh">
+        <button *ngIf="hasFilter" (click)="resetFilter($event)" type="button" class="badge badge-secondary" aria-label="Close">
+            {{ keySearch }} <span aria-hidden="true">&#215;</span>
+        </button>
+      </div>
+</div>
+

@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TaskShellComponent } from './containers/task-shell/task-shell.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskEditComponent } from './components/task-edit/task-edit.component';
+import { TaskFilterComponent } from './components/task-filter/task-filter.component';
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
@@ -29,7 +30,8 @@ const taskRoutes: Routes = [
   declarations: [
     TaskShellComponent,
     TaskListComponent,
-    TaskEditComponent
+    TaskEditComponent,
+    TaskFilterComponent
   ]
 })
 export class TaskModule { }

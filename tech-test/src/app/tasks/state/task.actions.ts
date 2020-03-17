@@ -8,6 +8,8 @@ export enum TaskActionTypes {
   SetCurrentTask = '[Task] Set Current Task',
   ClearCurrentTask = '[Task] Clear Current Task',
   InitializeCurrentTask = '[Task] Initialize Current Task',
+  FilterTask = '[Task] Search Task',
+  ShowFilteredTasks = '[Task] Show Filtered Tasks',
   Load = '[Task] Load',
   LoadSuccess = '[Task] Load Success',
   LoadFail = '[Task] Load Fail',
@@ -29,6 +31,12 @@ export class ToggleTaskCode implements Action {
   constructor(public payload: boolean) { }
 }
 
+export class ShowFilteredTasks implements Action {
+  readonly type = TaskActionTypes.ShowFilteredTasks;
+
+  constructor(public payload: boolean) { }
+}
+
 export class SetCurrentTask implements Action {
   readonly type = TaskActionTypes.SetCurrentTask;
 
@@ -41,6 +49,12 @@ export class ClearCurrentTask implements Action {
 
 export class InitializeCurrentTask implements Action {
   readonly type = TaskActionTypes.InitializeCurrentTask;
+}
+
+export class FilterTask implements Action {
+  readonly type = TaskActionTypes.FilterTask;
+
+  constructor(public payload: string) { }
 }
 
 export class Load implements Action {
@@ -118,6 +132,8 @@ export type TaskActions = ToggleTaskCode
   | SetCurrentTask
   | ClearCurrentTask
   | InitializeCurrentTask
+  | FilterTask
+  | ShowFilteredTasks
   | Load
   | LoadSuccess
   | LoadFail

@@ -13,6 +13,11 @@ export const getShowTaskCode = createSelector(
     state => state.showTaskCode
 );
 
+export const getShowFilteredTasks = createSelector(
+    getTaskFeatureState,
+    state => state.showFilteredTasks
+);
+
 export const getCurrentTaskId = createSelector(
     getTaskFeatureState,
     state => state.currentTaskId
@@ -31,7 +36,7 @@ export const getCurrentTask = createSelector(
                 done: ''
             };
         } else {
-            return currentTaskId ? state.tasks.find(p => p.id === currentTaskId) : null;
+            return currentTaskId ? state.tasks.find(task => task.id === currentTaskId) : null;
         }
     }
 );
@@ -41,7 +46,13 @@ export const getTasks = createSelector(
     state => state.tasks
 );
 
+export const getFilteredTasks = createSelector(
+    getTaskFeatureState,
+    state => state.filteredTasks
+);
+
 export const getError = createSelector(
     getTaskFeatureState,
     state => state.error
 );
+

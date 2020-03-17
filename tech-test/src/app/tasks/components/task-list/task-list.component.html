@@ -1,5 +1,4 @@
 <div class="card">
-
   <div class="card-header">
     {{pageTitle}}
   </div>
@@ -7,7 +6,7 @@
   <div class="card-body" *ngIf="tasks">
     <div class="list-group">
       <button class="list-group-item list-group-item-action rounded-0"
-          *ngFor="let task of tasks"
+          *ngFor="let task of currentTask"
           [ngClass]="{'active': task?.id === selectedTask?.id}"
           (click)="taskSelected(task)">{{ task.label }}
         <ng-container *ngIf="displayCode">
@@ -25,7 +24,7 @@
                  type="checkbox"
                  (change)="checkChanged($event.target.checked)"
                  [checked]="displayCode">
-          Display Task Code
+          show Id
         </label>
       </div>
       <div class="col-md-4 text-right">
