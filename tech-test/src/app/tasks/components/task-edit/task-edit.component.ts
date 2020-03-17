@@ -153,4 +153,10 @@ export class TaskEditComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
+  setToDone(): void {
+    let todayDate = new Date();
+    this.task.done = todayDate.toString();
+    this.saveTask();
+  }
+
 }

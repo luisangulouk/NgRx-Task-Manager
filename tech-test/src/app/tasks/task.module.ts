@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { taskStatusPipe } from '../shared/task-status.pipe';
 import { TaskShellComponent } from './containers/task-shell/task-shell.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskEditComponent } from './components/task-edit/task-edit.component';
@@ -28,6 +29,7 @@ const taskRoutes: Routes = [
     ),
   ],
   declarations: [
+    taskStatusPipe,
     TaskShellComponent,
     TaskListComponent,
     TaskEditComponent,

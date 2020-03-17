@@ -3,7 +3,7 @@ import { TaskActionTypes, TaskActions } from './task.actions';
 
 // State for this feature (Task)
 export interface TaskState {
-  showTaskCode: boolean;
+  showTaskStatus: boolean;
   showFilteredTasks: boolean;
   currentTaskId: number | null;
   tasks: Task[];
@@ -12,7 +12,7 @@ export interface TaskState {
 }
 
 export const initialState: TaskState = {
-  showTaskCode: true,
+  showTaskStatus: true,
   showFilteredTasks: false,
   currentTaskId: null,
   tasks: [],
@@ -23,10 +23,10 @@ export const initialState: TaskState = {
 export function reducer(state = initialState, action: TaskActions): TaskState {
 
   switch (action.type) {
-    case TaskActionTypes.ToggleTaskCode:
+    case TaskActionTypes.ToggleTaskStatus:
       return {
         ...state,
-        showTaskCode: action.payload
+        showTaskStatus: action.payload
       };
 
     case TaskActionTypes.SetCurrentTask:

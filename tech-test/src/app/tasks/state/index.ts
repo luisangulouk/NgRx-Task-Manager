@@ -8,9 +8,9 @@ export interface State {
 // Selector functions
 const getTaskFeatureState = createFeatureSelector<fromTasks.TaskState>('tasks');
 
-export const getShowTaskCode = createSelector(
+export const getShowTaskStatus = createSelector(
     getTaskFeatureState,
-    state => state.showTaskCode
+    state => state.showTaskStatus
 );
 
 export const getShowFilteredTasks = createSelector(

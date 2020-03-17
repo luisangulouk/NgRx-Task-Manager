@@ -14,7 +14,7 @@ export class TaskListComponent implements OnInit, OnChanges{
   @Input() tasks: Task[];
   @Input() filteredTasks: Task[];
   @Input() showFilteredTasks: boolean;
-  @Input() displayCode: boolean;
+  @Input() displayStatus: boolean;
   @Input() selectedTask: Task;
   @Output() checked = new EventEmitter<boolean>();
   @Output() initializeNewTask = new EventEmitter<void>();

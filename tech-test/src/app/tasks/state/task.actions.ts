@@ -4,7 +4,7 @@ import { Task } from '../task';
 import { Action } from '@ngrx/store';
 
 export enum TaskActionTypes {
-  ToggleTaskCode = '[Task] Toggle Task Code',
+  ToggleTaskStatus = '[Task] Toggle Task Status',
   SetCurrentTask = '[Task] Set Current Task',
   ClearCurrentTask = '[Task] Clear Current Task',
   InitializeCurrentTask = '[Task] Initialize Current Task',
@@ -25,8 +25,8 @@ export enum TaskActionTypes {
 }
 
 // Action Creators
-export class ToggleTaskCode implements Action {
-  readonly type = TaskActionTypes.ToggleTaskCode;
+export class ToggleTaskStatus implements Action {
+  readonly type = TaskActionTypes.ToggleTaskStatus;
 
   constructor(public payload: boolean) { }
 }
@@ -128,7 +128,7 @@ export class DeleteTaskFail implements Action {
 }
 
 // Union the valid types
-export type TaskActions = ToggleTaskCode
+export type TaskActions = ToggleTaskStatus
   | SetCurrentTask
   | ClearCurrentTask
   | InitializeCurrentTask

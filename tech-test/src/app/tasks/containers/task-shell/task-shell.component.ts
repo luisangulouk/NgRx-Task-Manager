@@ -11,7 +11,7 @@ import { Task } from '../../task';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskShellComponent implements OnInit {
-  displayCode$: Observable<boolean>;
+  displayStatus$: Observable<any>;
   selectedTask$: Observable<Task>;
   tasks$: Observable<Task[]>;
   filteredTasks$: Observable<Task[]>;
@@ -27,11 +27,11 @@ export class TaskShellComponent implements OnInit {
     this.showFilteredTasks$ = this.store.pipe(select(fromTask.getShowFilteredTasks));
     this.errorMessage$ = this.store.pipe(select(fromTask.getError));
     this.selectedTask$ = this.store.pipe(select(fromTask.getCurrentTask));
-    this.displayCode$ = this.store.pipe(select(fromTask.getShowTaskCode));
+    this.displayStatus$ = this.store.pipe(select(fromTask.getShowTaskStatus));
   }
 
   checkChanged(value: boolean): void {
-    this.store.dispatch(new taskActions.ToggleTaskCode(value));
+    this.store.dispatch(new taskActions.ToggleTaskStatus(value));
   }
 
   newTask(): void {

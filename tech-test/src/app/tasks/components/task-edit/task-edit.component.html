@@ -58,18 +58,16 @@
 
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="descriptionId">status</label>
-
           <div class="col-md-9">
-            <input [ngClass]="{'is-invalid': displayMessage.done}"
-                      class="form-control" 
-                      id="doneId" 
-                      type="text"
-                      placeholder="Status"
-                      formControlName="done"
-                      (blur)="blur()" />
-            <span class="invalid-feedback" *ngIf="displayMessage.done">
-              {{ displayMessage.done}}
-            </span>
+            {{ task.done | Status }}
+            <button 
+              class="btn btn-link" 
+              type="button"
+              (click)="setToDone()"
+              style="width:80px;margin-right:10px" 
+              [disabled]="!taskForm.valid"
+              >Set to Done
+            </button>
           </div>
         </div>
 
