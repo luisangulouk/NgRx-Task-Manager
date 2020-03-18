@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 import { TaskFilterComponent } from './task-filter.component';
 
 describe('TaskFilterComponent', () => {
-  let component: TaskFilterComponent;
-  let fixture: ComponentFixture<TaskFilterComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskFilterComponent ]
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule,
+        FormsModule
+      ],
+      declarations: [
+        TaskFilterComponent
+      ],
+    }).compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TaskFilterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component', () => {
+    const fixture = TestBed.createComponent(TaskFilterComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 });

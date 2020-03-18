@@ -31,7 +31,8 @@ describe('Task Reducer', () => {
       const result = reducer(initialState, action);
 
       expect(result).toEqual({
-        ...initialState
+        ...initialState,
+        filteredTasks: []
       });
 
     });
@@ -44,7 +45,8 @@ describe('Task Reducer', () => {
 
       expect(result).toEqual({
         ...initialState,
-        tasks
+        tasks,
+        filteredTasks: tasks
       });
 
     });
