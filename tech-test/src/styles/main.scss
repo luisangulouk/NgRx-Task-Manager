@@ -1,0 +1,14 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import '00_settings/colors';
+@import '00_settings/font-variables';
+@import '10_tools/font-families';
+@import '20_generic/reset';
+@import '30_elements/forms';
+@import '30_elements/cards';
+@import '30_elements/search-bar';
+@import '40_objects/layout';
+@import '50_components/task';
+@import '60_utilities/colors';
+@import '60_utilities/font-families';
+

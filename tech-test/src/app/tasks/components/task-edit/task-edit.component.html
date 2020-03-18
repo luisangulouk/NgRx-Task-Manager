@@ -1,0 +1,103 @@
+<div class="card" *ngIf="task">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+  <div class="card-body">
+    <form novalidate (ngSubmit)="saveTask()" [formGroup]="taskForm">
+      <fieldset>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="taskLabelId">Task</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.label }" 
+                   class="form-control" 
+                   id="taskLabelId" 
+                   type="text" 
+                   placeholder="label (required)" 
+                   formControlName="label" 
+                   (blur)="blur()" />
+            <span class="invalid-feedback" *ngIf="displayMessage.label">
+              {{displayMessage.label}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="descriptionId">Category</label>
+
+          <div class="col-md-9">
+            <input [ngClass]="{'is-invalid': displayMessage.category}"
+                      class="form-control" 
+                      id="categoryId" 
+                      type="text"
+                      placeholder="Category"
+                      formControlName="category"
+                      (blur)="blur()" />
+            <span class="invalid-feedback" *ngIf="displayMessage.category">
+              {{ displayMessage.category}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="descriptionId">Description</label>
+
+          <div class="col-md-9">
+            <textarea [ngClass]="{'is-invalid': displayMessage.description}"
+                      class="form-control" 
+                      id="descriptionId" 
+                      placeholder="Description" 
+                      rows=3 
+                      formControlName="description">
+            </textarea>
+            <span class="invalid-feedback" *ngIf="displayMessage.description">
+              {{ displayMessage.description}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="descriptionId">status</label>
+          <div class="col-md-9">
+            <span class="task-status">{{ task.done | Status }}</span>
+              <input class="form-control" 
+                id="doneId" 
+                type="hidden"
+                placeholder="Status"
+                formControlName="done" />
+              <button 
+              class="btn btn-link" 
+              type="button"
+              (click)="taskSwitcher()"
+              [disabled]="!taskForm.valid"
+              >{{ taskSwitch }}
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-10 col-md-offset-2">
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-primary" type="submit" [disabled]="!taskForm.valid || !taskForm.dirty">
+                Save
+              </button>
+            </span>
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-light" type="button" (click)="cancelEdit()">
+                Cancel
+              </button>
+            </span>
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-light" type="button" (click)="deleteTask()">
+                Delete
+              </button>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>

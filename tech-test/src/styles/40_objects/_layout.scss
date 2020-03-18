@@ -1,0 +1,32 @@
+
+/* block__elem--mod */
+
+.landing {
+    &-container {
+        margin: 0;
+    }
+}
+
+.header {
+    &-box {
+        margin-bottom: 15px;
+    }
+
+    &-logo__image {
+        padding: 10px;
+        margin: 10px 26px 0 26px;
+        width: 6rem;
+        height: 6rem;
+        img {
+            width: 100%;
+        }
+    }
+
+    &-band__text {
+        padding: 13px 20px 1px 35px;
+        background-color: $brand-info-band;
+        font-weight: 500;
+        line-height: 1.4;
+        color: $brand-info-band-text;
+    }
+}

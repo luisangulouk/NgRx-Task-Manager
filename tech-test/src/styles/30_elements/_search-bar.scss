@@ -1,0 +1,23 @@
+.search {
+    &-filter {
+        &__info {
+            color: $brand-faded-label;
+            font-size: 80%;
+            .close {
+                float: none;
+                color: $brand-bg;
+                @include base-font--bold;
+                font-size: 14px;
+                padding: 1px 4px 2px 4px;
+                border: 1px solid $brand-btn-shadow;
+                background-color: $brand-btn-close-bg;
+                text-shadow: none;
+            }
+            span {
+                color: $brand-btn-close-icon;
+                @include base-font--normal;
+                font-size: 16px;
+            }
+        }
+    }
+}
