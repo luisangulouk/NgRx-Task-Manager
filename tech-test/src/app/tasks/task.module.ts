@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -23,6 +24,7 @@ const taskRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(taskRoutes),
+    FormsModule,
     StoreModule.forFeature('tasks', reducer),
     EffectsModule.forFeature(
       [ TaskEffects ]
