@@ -1,0 +1,25 @@
+.task {
+    box-sizing: border-box;
+    padding: 10px;
+
+    &-card {
+        background-color: $brand-card-bg;
+    }
+
+    &-status {
+        vertical-align: middle;
+    }
+
+    &-profile {
+        &_btn-standard {
+            margin-right: 15px;
+        }
+    }
+
+}
+
+
+
+.spinner-container {
+    padding-bottom: 150px;
+}

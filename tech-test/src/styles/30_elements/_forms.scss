@@ -1,0 +1,29 @@
+input,
+select,
+textarea {
+    font-weight: 300;
+}
+
+input,
+textarea {
+    &::placeholder {
+        font-weight: 300;
+    }
+
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        font-weight: 300;
+    }
+
+    &::-ms-input-placeholder {
+        /* Microsoft Edge */
+        font-weight: 300;
+    }
+
+    &:focus {
+        outline: none !important;
+        box-shadow: 0 !important;
+        border-color: $brand-btn-shadow !important;
+    }
+}
+
