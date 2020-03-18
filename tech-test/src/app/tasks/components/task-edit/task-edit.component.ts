@@ -30,6 +30,11 @@ export class TaskEditComponent implements OnInit, OnChanges, OnDestroy {
 
   componentActive = true;
   taskForm: FormGroup;
+  taskSwitch: string;
+  taskStatus = {
+    DONE: 'Set to Done',
+    ACTIVE: 'Reactivate Task'
+  };
 
   task: Task | null;
 
@@ -117,6 +122,8 @@ export class TaskEditComponent implements OnInit, OnChanges, OnDestroy {
         description: this.task.description,
         done: this.task.done
       });
+
+      this.taskSwitch = typeof this.task.done == 'boolean' ? this.taskStatus.DONE : this.taskStatus.ACTIVE;
     }
   }
 
@@ -139,23 +146,30 @@ export class TaskEditComponent implements OnInit, OnChanges, OnDestroy {
 
   saveTask(): void {
     if (this.taskForm.valid) {
-      if (this.taskForm.dirty) {
         const p = { ...this.task, ...this.taskForm.value };
-
         if (p.id === 0) {
           this.create.emit(p);
         } else {
           this.update.emit(p);
         }
-      }
     } else {
       this.errorMessage = new Error('Ops seems like something went wrong while updating the task!');
     }
   }
 
-  setToDone(): void {
-    let todayDate = new Date();
-    this.task.done = todayDate.toString();
+  taskSwitcher(): void {
+    if(this.taskSwitch === this.taskStatus.DONE){
+      let todayDate = new Date();
+      this.task.done = todayDate.toString();
+      this.taskForm.patchValue({
+        done: this.task.done
+      });
+    } else {
+      this.taskForm.patchValue({
+        done: false
+      });
+    }
+
     this.saveTask();
   }
 

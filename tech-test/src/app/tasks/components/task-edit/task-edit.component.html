@@ -59,32 +59,36 @@
         <div class="form-group row">
           <label class="col-md-3 col-form-label" for="descriptionId">status</label>
           <div class="col-md-9">
-            {{ task.done | Status }}
-            <button 
+            <span class="task-status">{{ task.done | Status }}</span>
+              <input class="form-control" 
+                id="doneId" 
+                type="hidden"
+                placeholder="Status"
+                formControlName="done" />
+              <button 
               class="btn btn-link" 
               type="button"
-              (click)="setToDone()"
-              style="width:80px;margin-right:10px" 
+              (click)="taskSwitcher()"
               [disabled]="!taskForm.valid"
-              >Set to Done
+              >{{ taskSwitch }}
             </button>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-md-10 col-md-offset-2">
-            <span>
-              <button class="btn btn-primary" type="submit" style="width:80px;margin-right:10px" [disabled]="!taskForm.valid || !taskForm.dirty">
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-primary" type="submit" [disabled]="!taskForm.valid || !taskForm.dirty">
                 Save
               </button>
             </span>
-            <span>
-              <button class="btn btn-light" type="button" style="width:80px;margin-right:10px" (click)="cancelEdit()">
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-light" type="button" (click)="cancelEdit()">
                 Cancel
               </button>
             </span>
-            <span>
-              <button class="btn btn-light" type="button" style="width:80px" (click)="deleteTask()">
+            <span class="task-profile_btn-standard">
+              <button class="btn btn-light" type="button" (click)="deleteTask()">
                 Delete
               </button>
             </span>
